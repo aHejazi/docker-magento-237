@@ -23,13 +23,6 @@ bin/setup-composer-auth
 
 bin/fixowns
 
-echo "Adding Magento modules to Composer allow-plugins directive..."
-bin/clinotty composer config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
-bin/clinotty composer config --no-plugins allow-plugins.magento/composer-root-update-plugin true
-bin/clinotty composer config --no-plugins allow-plugins.magento/magento-composer-installer true
-bin/clinotty composer config --no-plugins allow-plugins.magento/inventory-composer-installer true
-bin/clinotty composer config --no-plugins allow-plugins.laminas/laminas-dependency-plugin true
-
 if [ "$EDITION" == "mageos-nightly" ]; then
   bin/clinotty composer create-project --stability alpha --repository-url=https://upstream-nightly.mage-os.org magento/project-community-edition .
 elif [ "$EDITION" == "mageos-mirror" ] || [ "$EDITION" == "mageos" ]; then
@@ -41,6 +34,13 @@ elif [ "$EDITION" == "mageos-maxcluster-mirror" ]; then
 else
   bin/clinotty composer create-project --repository=https://repo.magento.com/ magento/project-"${EDITION}"-edition="${VERSION}" .
 fi
+
+echo "Adding Magento modules to Composer allow-plugins directive..."
+bin/clinotty composer config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
+bin/clinotty composer config --no-plugins allow-plugins.magento/composer-root-update-plugin true
+bin/clinotty composer config --no-plugins allow-plugins.magento/magento-composer-installer true
+bin/clinotty composer config --no-plugins allow-plugins.magento/inventory-composer-installer true
+bin/clinotty composer config --no-plugins allow-plugins.laminas/laminas-dependency-plugin true
 
 bin/fixowns
 
