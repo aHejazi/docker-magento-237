@@ -25,28 +25,21 @@ bin/fixowns
 
 if [ "$EDITION" == "mageos-nightly" ]; then
   echo "Using https://upstream-nightly.mage-os.org"
-  bin/cli composer create-project --stability alpha --repository-url=https://upstream-nightly.mage-os.org magento/project-community-edition .
+  bin/clinotty composer create-project --stability alpha --repository-url=https://upstream-nightly.mage-os.org magento/project-community-edition .
 elif [ "$EDITION" == "mageos-mirror" ] || [ "$EDITION" == "mageos" ]; then
   echo "Using https://mirror.mage-os.org"
-  bin/cli composer create-project --repository-url=https://mirror.mage-os.org magento/project-community-edition="${VERSION}" .
+  bin/clinotty composer create-project --repository-url=https://mirror.mage-os.org magento/project-community-edition="${VERSION}" .
 elif [ "$EDITION" == "mageos-hypernode-mirror" ]; then
   echo "Using mage-os.hypernode.com"
-  bin/cli composer create-project --repository-url=https://mage-os.hypernode.com/mirror magento/project-community-edition="${VERSION}" .
+  bin/clinotty composer create-project --repository-url=https://mage-os.hypernode.com/mirror magento/project-community-edition="${VERSION}" .
 elif [ "$EDITION" == "mageos-maxcluster-mirror" ]; then
   echo "Using mage-os.maxcluster.net..."
-  bin/cli composer create-project --repository-url=https://mage-os.maxcluster.net/mirror magento/project-community-edition="${VERSION}" .
+  bin/clinotty composer create-project --repository-url=https://mage-os.maxcluster.net/mirror magento/project-community-edition="${VERSION}" .
 else
   echo "Using repo.magento.com..."
-  bin/cli composer create-project --repository=https://repo.magento.com/ magento/project-community-edition="${VERSION}" .
+  bin/clinotty composer create-project --repository=https://repo.magento.com/ magento/project-community-edition="${VERSION}" .
 fi
-
-echo "Adding Magento modules to Composer allow-plugins directive..."
-bin/clinotty composer config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
-bin/clinotty composer config --no-plugins allow-plugins.magento/composer-root-update-plugin true
-bin/clinotty composer config --no-plugins allow-plugins.magento/magento-composer-installer true
-bin/clinotty composer config --no-plugins allow-plugins.magento/inventory-composer-installer true
-bin/clinotty composer config --no-plugins allow-plugins.laminas/laminas-dependency-plugin true
 
 bin/fixowns
 
-bin/cli [ ! -f "./var/composer_home/auth.json" ] && bin/cli mkdir -p ./var/composer_home && bin/cli cp /var/www/.composer/auth.json ./var/composer_home/auth.json
+bin/clinotty [ ! -f "./var/composer_home/auth.json" ] && bin/clinotty mkdir -p ./var/composer_home && bin/clinotty cp /var/www/.composer/auth.json ./var/composer_home/auth.json
