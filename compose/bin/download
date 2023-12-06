@@ -37,7 +37,9 @@ elif [ "$EDITION" == "mageos-maxcluster-mirror" ]; then
   bin/clinotty composer create-project --repository-url=https://mage-os.maxcluster.net/mirror magento/project-community-edition="${VERSION}" .
 else
   echo "Using repo.magento.com..."
-  bin/clinotty composer create-project --repository=https://repo.magento.com/ magento/project-community-edition="${VERSION}" .
+  bin/clinotty composer create-project --repository=https://repo.magento.com/ magento/project-community-edition="${VERSION}" ./temp
+  bin/clinotty cp -r temp/* .
+  bin/clinotty rm -rf temp
 fi
 
 bin/fixowns
