@@ -9,7 +9,5 @@ mv compose/.vscode ./
 rm -rf compose .git
 git init
 
-sudo apt-get install bc
-
 # Ensure these are created so Docker doesn't create them as root
 mkdir -p ~/.composer ~/.ssh
