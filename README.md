@@ -30,9 +30,7 @@ View Dockerfiles for the latest tags:
 - [markoshust/magento-nginx (Docker Hub)](https://hub.docker.com/r/markoshust/magento-nginx/)
   - [`1.18`, `1.18-8`](images/nginx/1.18)
 - [markoshust/magento-php (Docker Hub)](https://hub.docker.com/r/markoshust/magento-php/)
-  - [`8.1-fpm`, `8.1-fpm-1`](images/php/8.1)
-  - [`8.2-fpm-develop`](images/php/8.2)
-  - [`7.4-fpm`, `7.4-fpm-15`](https://github.com/markshust/docker-magento/tree/master/images/php/7.4)
+  - [`7.4-fpm`, `7.4-fpm-15`](https://github.com/aHejazi/docker-magento-237/tree/master/images/php/7.4)
 - [markoshust/magento-opensearch (Docker Hub)](https://hub.docker.com/r/markoshust/magento-opensearch/)
     - [`1.2`, `1.2-0`](images/opensearch/1.2)
     - [`2.4-develop`](images/opensearch/2.4)
@@ -132,7 +130,7 @@ mkdir -p ~/Sites/magento
 cd $_
 
 # Run this automated one-liner from the directory you want to install your project.
-curl -s https://raw.githubusercontent.com/markshust/docker-magento/master/lib/onelinesetup | bash -s -- magento.test 2.3.7-p3 community
+curl -s https://raw.githubusercontent.com/aHejazi/docker-magento-237/master/lib/onelinesetup | bash -s -- magento.test 2.3.7-p3 community
 ```
 
 The `magento.test` above defines the hostname to use, and the `2.3.7-p3` defines the Magento version to install. Note that since we need a write to `/etc/hosts` for DNS resolution, you will be prompted for your system password during setup.
