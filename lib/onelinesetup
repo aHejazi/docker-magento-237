@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -o errexit
 
-DOMAIN=${1:-magento.test}
+DOMAIN=${1:-bayn.test}
 VERSION=${2:-2.3.7-p3}
 EDITION=${3:-community}
 
