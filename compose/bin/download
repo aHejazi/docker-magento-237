@@ -24,15 +24,20 @@ bin/setup-composer-auth
 bin/fixowns
 
 if [ "$EDITION" == "mageos-nightly" ]; then
+  echo "Using https://upstream-nightly.mage-os.org"
   bin/cli composer create-project --stability alpha --repository-url=https://upstream-nightly.mage-os.org magento/project-community-edition .
 elif [ "$EDITION" == "mageos-mirror" ] || [ "$EDITION" == "mageos" ]; then
+  echo "Using https://mirror.mage-os.org"
   bin/cli composer create-project --repository-url=https://mirror.mage-os.org magento/project-community-edition="${VERSION}" .
 elif [ "$EDITION" == "mageos-hypernode-mirror" ]; then
+  echo "Using mage-os.hypernode.com"
   bin/cli composer create-project --repository-url=https://mage-os.hypernode.com/mirror magento/project-community-edition="${VERSION}" .
 elif [ "$EDITION" == "mageos-maxcluster-mirror" ]; then
+  echo "Using mage-os.maxcluster.net..."
   bin/cli composer create-project --repository-url=https://mage-os.maxcluster.net/mirror magento/project-community-edition="${VERSION}" .
 else
-  bin/cli composer create-project --repository=https://repo.magento.com/ magento/project-"${EDITION}"-edition="${VERSION}" .
+  echo "Using repo.magento.com..."
+  bin/cli composer create-project --repository=https://repo.magento.com/ magento/project-community-edition="${VERSION}" .
 fi
 
 echo "Adding Magento modules to Composer allow-plugins directive..."
